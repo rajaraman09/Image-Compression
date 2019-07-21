@@ -1,0 +1,32 @@
+//test bench for floating point multiplier
+
+`include "wallacer2.v"
+
+module float_multi_tb;
+
+reg as,bs;
+reg [23:0] a,b;
+reg [7:0] ae,be;
+wire ms;
+wire [7:0] me;
+wire [23:0] m;
+
+wallacer2 rr(as,ae,a,bs,be,b,ms,me,m);
+
+
+initial
+begin
+as=1'b0; //45.789
+ae=8'b10000100;
+a=24'b101101110010011111101111;
+
+bs=1'b1;//-567.91
+be=8'b10001000;
+b=24'b100011011111101000111101;
+
+end
+
+initial
+$monitor($time,"as=%b,ae=%b,a=%b,bs=%b,be=%b,b=%b,ms=%b,me=%b,m=%b",as,ae,a,bs,be,b,ms,me,m);
+
+endmodule

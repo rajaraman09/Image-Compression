@@ -1,0 +1,31 @@
+//test bench for floating point multiplier
+
+`include "float_adder.v"
+
+module float_add_tb;
+
+reg nps3,nps4;
+reg [7:0] npe3,npe4;
+reg [23:0] np3,np4;
+wire is;
+wire [23:0] i;
+wire [7:0] ie;
+
+float_adder fg(nps3,npe3,np3,nps4,npe4,np4,is,ie,i);
+
+initial
+begin
+nps3=1'b0; //45.789
+npe3=8'b10000100;
+np3=24'b101101110010011111101111;
+
+nps4=1'b1;//-567.91
+npe4=8'b10001000;
+np4=24'b100011011111101000111101;
+
+end
+
+initial
+$monitor($time,"nps3=%b,npe3=%b,np3=%b,nps4=%b,npe4=%b,np4=%b,is=%b,ie=%b,i=%b",nps3,npe3,np3,nps4,npe4,np4,is,ie,i);
+
+endmodule
